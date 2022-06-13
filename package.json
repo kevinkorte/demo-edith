@@ -1,0 +1,23 @@
+{
+  "name": "edith",
+  "private": true,
+  "scripts": {
+    "start": "TZ=UTC meteor run --settings settings-dev.json",
+    "test": "meteor test --once --driver-package meteortesting:mocha"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.3",
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.2.0-beta1",
+    "dayjs": "^1.11.2",
+    "imask": "^6.4.2",
+    "jquery": "^3.6.0",
+    "meteor-node-stubs": "^1.2.1",
+    "sweetalert2": "^11.4.17",
+    "timepicker": "^1.13.18",
+    "tom-select": "^2.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
