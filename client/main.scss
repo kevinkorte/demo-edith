@@ -1,5 +1,6 @@
-@import "{}/node_modules/bootstrap/scss/functions";
-@import "{}/node_modules/bootstrap/scss/variables";
+// @import "{}/node_modules/bootstrap/scss/functions";
+// @import "{}/node_modules/bootstrap/scss/variables";
+@import "{}/node_modules/bootstrap/scss/bootstrap";
 
 // Create your own map
 $custom-colors: (
@@ -40,5 +41,4 @@ $font-family-base: "Inter", sans-serif;
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-@import "{}/node_modules/bootstrap/scss/bootstrap";
 @import "../imports/ui/stylesheets/_export";
