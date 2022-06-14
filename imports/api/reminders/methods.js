@@ -34,7 +34,15 @@ Meteor.methods({
     const reminders = Reminders.find({}, { $filter: { sent: false } });
     if (reminders.count() > 0) {
       reminders.forEach((reminder) => {
-        console.log(dayjs().isSameOrAfter(dayjs(reminder.timeToSend)));
+        if (dayjs().isSameOrAfter(dayjs(reminder.timeToSend))) {
+          // client.messages
+          //   .create({
+          //     body: "Hello, world!",
+          //     from: "+19842177570", //Twilio demo from number
+          //     to: "+1xxxxxxxxxx",
+          //   })
+          //   .then((message) => console.log(message.sid));
+        }
       });
     }
   },
