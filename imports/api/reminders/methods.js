@@ -17,10 +17,12 @@ Meteor.methods({
       selectedContacts,
       message,
       timeToSend: timestamp,
+      sent: false,
     });
   },
   "reminders.remove"(_id) {
     check(_id, String);
     return Reminders.remove(_id);
   },
+  "reminders.sendIfReady"() {},
 });
