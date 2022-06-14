@@ -271,7 +271,7 @@ Template.Page_reminders.events({
     const formattedTime = appointment_timestamp.format("dddd M/D [at] h:mma");
     document.getElementById(
       "message"
-    ).value = `*Titan Homes Automated Reminder* Appointment Reminder at ${location} on ${formattedTime} for ${description}. This message is automated. Contact our project manager for questions.`;
+    ).value = `*E.D.I.T.H Automated Reminder* Appointment Reminder at ${location} on ${formattedTime} for ${description}. This message is automated.`;
     const modalElement = document.getElementById("defaultMessageModal");
     const modal = bootstrap.Modal.getInstance(modalElement);
     modal.hide();
