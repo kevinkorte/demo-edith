@@ -1,0 +1,34 @@
+.green-500-button {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-green-50);
+  --bs-btn-hover-bg: var(--bs-green-600);
+  --bs-btn-hover-color: white;
+}
+.btn-red-50 {
+  --bs-btn-border-color: var(--bs-red-200);
+  --bs-btn-color: var(--bs-red-400);
+  --bs-btn-hover-bg: var(--bs-red-100);
+  --bs-btn-hover-color: var(--bs-red-500);
+}
+.btn-modal-footer-cancel {
+  --bs-btn-color: var(--bs-slate-500);
+  --bs-btn-border-width: 0;
+}
+.btn-white {
+  --bs-btn-border-color: var(--bs-slate-200);
+  --bs-btn-color: var(--bs-slate-600);
+}
+
+.btn-state-select {
+  --bs-btn-hover-bg: var(--bs-slate-300);
+  --bs-btn-active-bg: var(--bs-slate-400);
+}
+
+.btn-slate-50 {
+  --bs-btn-border-color: var(--bs-slate-200);
+  --bs-btn-color: var(--bs-slate-600);
+  --bs-btn-hover-bg: var(--bs-slate-100);
+  --bs-btn-hover-border-color: var(--bs-slate-300);
+  --bs-btn-active-bg: var(--bs-slate-200);
+  --bs-btn-active-border-color: var(--bs-slate-400);
+}

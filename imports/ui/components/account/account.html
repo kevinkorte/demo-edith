@@ -1,0 +1,52 @@
+<template name="Account_component">
+  <div class="fs-4 fw-bold mb-2 text-slate-700">Account settings</div>
+  <form id="user">
+    <div class="row g-3 align-items-center mb-3">
+      <div class="col-sm-2">
+        <label for="firstName" class="col-form-label text-slate-600"
+          >First Name</label
+        >
+      </div>
+      <div class="col-auto">
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          value="{{readFirstName}}"
+        />
+      </div>
+    </div>
+    <div class="row g-3 align-items-center mb-3">
+      <div class="col-sm-2">
+        <label for="lastName" class="col-form-label text-slate-600"
+          >Last Name</label
+        >
+      </div>
+      <div class="col-auto">
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          value="{{readLastName}}"
+        />
+      </div>
+    </div>
+    <div class="row g-3 align-items-center mb-3 row">
+      <label for="staticEmail" class="col-sm-2 col-form-label text-slate-600"
+        >Email</label
+      >
+      <div class="col-auto">
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext text-slate-500"
+          id="staticEmail"
+          value="{{getUserEmail}}"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-green-500 px-3 green-500-button px-5">
+      <span>Save</span>
+    </button>
+  </form>
+</template>

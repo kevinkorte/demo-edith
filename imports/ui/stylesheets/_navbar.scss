@@ -1,0 +1,30 @@
+.main-navbar {
+  --bs-navbar-color: var(--bs-slate-400);
+  --bs-navbar-hover-color: var(--bs-slate-300);
+  --bs-navbar-active-color: var(--bs-cyan-400);
+}
+
+.dropdown-menu {
+  --bs-dropdown-padding-x: 7px;
+  --bs-dropdown-link-hover-bg: var(--bs-slate-100);
+  --bs-dropdown-link-hover-color: var(--bs-slate-900);
+  --bs-dropdown-link-color: var(--bs-slate-600);
+  --bs-dropdown-border-radius: 10px;
+  --bs-dropdown-link-active-bg: var(--bs-blue-700);
+  --bs-dropdown-link-active-color: var(--bs-blue-50);
+  box-shadow: $box-shadow;
+
+  & a.dropdown-item {
+    border-radius: 6px;
+  }
+}
+
+.list-group-sidebar-modifier {
+  --bs-list-group-border-width: 0;
+  --bs-list-group-color: var(--bs-slate-600);
+  --bs-list-group-action-hover-bg: var(--bs-slate-100);
+  --bs-list-group-active-bg: var(--bs-slate-900);
+  & .list-group-item.list-group-item-action {
+    border-radius: 0.5rem;
+  }
+}
