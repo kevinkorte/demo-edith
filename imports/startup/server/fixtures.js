@@ -1,5 +1,7 @@
 // Fill the DB with example data on startup
 
+//Consider adding faker for data
+
 import { Meteor } from "meteor/meteor";
 // import { Links } from "../../api/links/links.js";
 import { Accounts } from "meteor/accounts-base";
