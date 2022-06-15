@@ -1,0 +1,9 @@
+.gradient-banner {
+  background: linear-gradient(to right, var(--bs-cyan-100), var(--bs-teal-100));
+  color: var(--bs-sky-500);
+
+  & a {
+    font-weight: 700;
+    color: var(--bs-sky-700);
+  }
+}
