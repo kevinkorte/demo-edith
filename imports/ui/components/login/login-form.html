@@ -32,7 +32,13 @@
     </div>
     <div class="">
       <button type="submit" class="btn btn-slate-900 w-100">
-        Check out the demo
+        {{#if loggingIn}}
+        <span
+          class="spinner-grow spinner-grow-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        {{else}} Check out the demo {{/if}}
       </button>
     </div>
   </form>

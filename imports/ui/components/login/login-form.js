@@ -40,4 +40,9 @@ Template.Login_form_component.helpers({
       return Session.get("errorMessage");
     }
   },
+  loggingIn() {
+    if (Meteor.loggingIn()) {
+      return true;
+    }
+  },
 });
