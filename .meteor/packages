@@ -34,5 +34,5 @@ accounts-password@2.3.1
 accounts-passwordless@2.1.2
 msavin:mongol
 fourseven:scss
-session@1.2.0
+session
 littledata:synced-cron

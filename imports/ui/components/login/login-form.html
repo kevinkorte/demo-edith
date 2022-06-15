@@ -1,6 +1,39 @@
 <template name="Login_form_component">
+  {{#if hasError}}
+  <div class="bg-red-600 text-red-100 rounded p-2 mb-3">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      fill="currentColor"
+      class="bi bi-x-octagon me-1"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"
+      />
+      <path
+        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+      />
+    </svg>
+    <span>{{readError}}</span>
+  </div>
+
+  {{/if}}
   <form id="login">
-    <input type="email" name="email" id="email" placeholder="Email Address" />
-    <button type="submit">Send login email</button>
+    <div class="mb-3">
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Access code"
+      />
+    </div>
+    <div class="">
+      <button type="submit" class="btn btn-slate-900 w-100">
+        Check out the demo
+      </button>
+    </div>
   </form>
 </template>

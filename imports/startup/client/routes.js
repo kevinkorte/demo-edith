@@ -9,21 +9,7 @@ const authRoute = FlowRouter.group({
   triggersEnter: [
     () => {
       if (!Meteor.userId()) {
-        console.log("HERE");
-        Meteor.loginWithPassword(
-          {
-            email: Meteor.settings.public.demoEmail,
-          },
-          "demo",
-          (error) => {
-            if (error) {
-              //TODO: Handle error
-              console.error(error);
-            } else {
-              FlowRouter.go("App.reminders");
-            }
-          }
-        );
+        FlowRouter.go("App.login");
       }
     },
   ],
@@ -33,17 +19,28 @@ const authRoute = FlowRouter.group({
 authRoute.route("/", {
   name: "App.home",
   action() {
-    this.render("App_body", "App_home");
+    // this.render("App_body", "App_home");
+    FlowRouter.go("App.reminders");
   },
 });
 
-authRoute.route("/login", {
+FlowRouter.route("/login", {
   name: "App.login",
+  triggersEnter: [
+    () => {
+      document.body.classList.add("bg-slate-50");
+    },
+  ],
+  triggersExit: [
+    () => {
+      document.body.classList.remove("bg-slate-50");
+    },
+  ],
   waitOn() {
     return [import("../../ui/pages/login/login-page")];
   },
   action() {
-    this.render("App_body", "Login_page");
+    this.render("Login_page");
   },
 });
 
