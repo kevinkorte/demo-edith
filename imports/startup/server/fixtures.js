@@ -1,6 +1,7 @@
 // Fill the DB with example data on startup
 
-//Consider adding faker for data
+import { faker } from "@faker-js/faker";
+import { Contacts } from "../../api/contacts/contacts";
 
 import { Meteor } from "meteor/meteor";
 // import { Links } from "../../api/links/links.js";
@@ -25,6 +26,16 @@ Meteor.startup(() => {
       Meteor.settings.public.demoEmail,
       "admin"
     );
+  }
+  const contacts = Contacts.find().fetch();
+  console.log(contacts.length);
+  if (contacts.length < 50) {
+    console.log(50 - contacts.length);
+    for (let contact = 0; contact <= 50 - contacts.length; contact++) {
+      const name = faker.name.findName();
+      const formattedPhone = faker.phone.phoneNumber("(###) ###-####");
+      Meteor.call("contacts.insert", name, "0000000000", formattedPhone, true);
+    }
   }
 });
 

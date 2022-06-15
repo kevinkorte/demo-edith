@@ -5,15 +5,17 @@ import { check } from "meteor/check";
 import { Contacts } from "./contacts";
 
 Meteor.methods({
-  "contacts.insert"(name, unmaskedPhone, formattedPhone) {
+  "contacts.insert"(name, unmaskedPhone, formattedPhone, fake) {
     check(name, String);
     check(unmaskedPhone, String);
     check(formattedPhone, String);
+    check(fake, Boolean);
     return Contacts.insert({
       unmaskedPhone,
       formattedPhone,
       name,
-      whoAdded: Meteor.userId(),
+      fake: fake,
+      // whoAdded: Meteor.userId(),
       createdAt: new Date(),
     });
   },

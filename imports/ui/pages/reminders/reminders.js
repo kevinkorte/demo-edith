@@ -202,6 +202,7 @@ Template.Page_reminders.events({
       name.toLowerCase(),
       masked.unmaskedValue,
       phone,
+      false,
       (error, result) => {
         if (error) {
           //TODO: Handle error
