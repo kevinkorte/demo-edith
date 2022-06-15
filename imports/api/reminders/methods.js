@@ -3,6 +3,7 @@
 import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
 import { Reminders } from "./reminders";
+import { Contacts } from "../../api/contacts/contacts";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -35,6 +36,15 @@ Meteor.methods({
     if (reminders.count() > 0) {
       reminders.forEach((reminder) => {
         if (dayjs().isSameOrAfter(dayjs(reminder.timeToSend))) {
+          reminder.selectedContacts.forEach((contact) => {
+            // console.log({ contact });
+            // console.log({ reminder });
+            //First find out if our contact is fake
+            const user = Contacts.findOne(contact);
+            if (!user.fake) {
+              console.log({ user });
+            }
+          });
           // client.messages
           //   .create({
           //     body: "Hello, world!",
