@@ -1,8 +1,10 @@
+import { Meteor } from "meteor/meteor";
 import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 import { Reminders } from "../../../api/reminders/reminders";
 import "./reminders.html";
+import "../../components/reminders/upcoming-reminder";
 import TomSelect from "tom-select";
 import IMask from "imask";
 import Swal from "sweetalert2";
@@ -27,9 +29,6 @@ Template.Page_reminders.onCreated(function () {
   this.autorun(() => {
     this.subscribe("reminders.all");
   });
-  Meteor.setInterval(() => {
-    Session.set("currentTime", new Date());
-  }, 1000);
 });
 
 Template.Page_reminders.onRendered(function () {
@@ -123,33 +122,7 @@ Template.Page_reminders.helpers({
       return "error-box is-invalid";
     }
   },
-  reminders() {
-    return Reminders.find({}, { sort: { timeToSend: 1 } });
-  },
-  displayTime(timestamp) {
-    const currentTime = dayjs(Session.get("currentTime"));
-    //This is a bit hacky, but relative time changes at the bottom of the minute, not the top
-    //Probably should find a solution using the customize features of the dayjs plugin
-    //But for now, this will make the relative time update at the top of the minute
-    return dayjs(currentTime.subtract(30, "second")).to(dayjs(timestamp));
-  },
-  displayTimePST(timestamp) {
-    return dayjs(timestamp).tz("America/Los_Angeles").format("h:mm a");
-  },
-  displayTimeMST(timestamp) {
-    return dayjs(timestamp).tz("America/Boise").format("h:mm a");
-  },
-  getContactName(contactId) {
-    console.log("Contact: ", contactId);
-    const contact = Contacts.findOne(contactId);
-    if (contact) {
-      return contact.name;
-    }
-    return;
-  },
-  displayDate(timestamp) {
-    return dayjs(timestamp).format("MMMM D");
-  },
+
   retrievePhone(location) {
     if (location === "wa") {
       return "(509) 555-1234";
@@ -333,41 +306,6 @@ Template.Page_reminders.events({
         }
       }
     );
-  },
-  "click #delete-reminder"(event) {
-    console.log(this);
-    Swal.fire({
-      titleText: "You are about to delete this reminder",
-      text: `${this.message}`,
-      icon: "warning",
-      iconColor: "#ef4444",
-      color: "#ef4444",
-      showCancelButton: true,
-      confirmButtonText: "Delete reminder",
-      confirmButtonColor: "#ef4444",
-      focusConfirm: false,
-      cancelButtonColor: "#ffffff",
-      buttonsStyling: false,
-      reverseButtons: true,
-      customClass: {
-        confirmButton: "btn btn-red-600 ms-2",
-        cancelButton: "btn btn-slate-100",
-      },
-    }).then((result) => {
-      if (result.isConfirmed === true) {
-        Meteor.call("reminders.remove", this._id, (error) => {
-          if (error) {
-            //TODO: Handle error
-            console.error(error);
-          } else {
-            info_success_toast(
-              "Reminder deleted",
-              "Reminder has been permanently deleted."
-            );
-          }
-        });
-      }
-    });
   },
 });
 

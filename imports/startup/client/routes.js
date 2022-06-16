@@ -65,10 +65,29 @@ authRoute.route("/reminders", {
     return [
       import("../../ui/layouts/body/body"),
       import("../../ui/pages/reminders/reminders"),
+      import("../../ui/components/reminders/upcoming-reminder"),
     ];
   },
   action() {
-    this.render("App_body", "Page_reminders");
+    this.render("App_body", "Page_reminders", {
+      reminder: "Component_reminder_upcoming",
+    });
+  },
+});
+
+authRoute.route("/reminders/sent", {
+  name: "App.reminders.sent",
+  waitOn() {
+    return [
+      import("../../ui/layouts/body/body"),
+      import("../../ui/pages/reminders/reminders"),
+      import("../../ui/components/reminders/sent-reminder"),
+    ];
+  },
+  action() {
+    this.render("App_body", "Page_reminders", {
+      reminder: "Component_reminder_sent",
+    });
   },
 });
 
