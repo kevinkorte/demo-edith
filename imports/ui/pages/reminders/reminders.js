@@ -157,6 +157,9 @@ Template.Page_reminders.helpers({
       return "(208) 555-4321";
     }
   },
+  countUpcomingReminders() {
+    return Reminders.find({ sent: false }).count();
+  },
 });
 
 Template.Page_reminders.events({

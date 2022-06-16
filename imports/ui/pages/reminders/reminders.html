@@ -322,6 +322,19 @@
         </form>
       </div>
       <div class="col-8 col-md-7">
+        <ul class="nav nav-pills mb-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Upcoming Reminders
+              <span class="badge text-bg-blue-200"
+                >{{countUpcomingReminders}}</span
+              ></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sent Reminders</a>
+          </li>
+        </ul>
         {{#each reminders}}
         <div class="card mb-3">
           <div class="card-body">

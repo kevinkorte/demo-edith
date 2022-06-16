@@ -42,16 +42,16 @@ Meteor.methods({
             //First find out if our contact is fake
             const user = Contacts.findOne(contact);
             if (!user.fake) {
-              console.log({ user });
+              // client.messages
+              //   .create({
+              //     body: reminder.message,
+              //     from: "+19842177570", //Twilio demo from number
+              //     to: `+1${user.unmaskedPhone}`,
+              //     statusCallback: "https://enxhen0at91aj.x.pipedream.net",
+              //   })
+              //   .then((message) => Meteor.call("sms.insert", message));
             }
           });
-          // client.messages
-          //   .create({
-          //     body: "Hello, world!",
-          //     from: "+19842177570", //Twilio demo from number
-          //     to: "+1xxxxxxxxxx",
-          //   })
-          //   .then((message) => console.log(message.sid));
         }
       });
     }
