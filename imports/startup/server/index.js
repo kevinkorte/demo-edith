@@ -2,4 +2,5 @@
 
 import "./fixtures.js";
 import "./cron";
+import "./webhooks";
 import "./register-api.js";

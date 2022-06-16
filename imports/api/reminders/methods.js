@@ -47,7 +47,8 @@ Meteor.methods({
               //     body: reminder.message,
               //     from: "+19842177570", //Twilio demo from number
               //     to: `+1${user.unmaskedPhone}`,
-              //     statusCallback: "https://enxhen0at91aj.x.pipedream.net",
+              //     statusCallback:
+              //       "https://6ed2-98-97-32-41.ngrok.io/twilio-webhook",
               //   })
               //   .then((message) => Meteor.call("sms.insert", message));
             }
