@@ -4,6 +4,7 @@ import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
 import { Reminders } from "./reminders";
 import { Contacts } from "../../api/contacts/contacts";
+import { Sms } from "../../api/sms/sms";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -42,15 +43,32 @@ Meteor.methods({
             //First find out if our contact is fake
             const user = Contacts.findOne(contact);
             if (!user.fake) {
+              console.log("Should be sending a message");
+              Meteor.call("sms.insert", "Hello there, first");
+
               // client.messages
               //   .create({
               //     body: reminder.message,
               //     from: "+19842177570", //Twilio demo from number
               //     to: `+1${user.unmaskedPhone}`,
               //     statusCallback:
-              //       "https://6ed2-98-97-32-41.ngrok.io/twilio-webhook",
+              //       "https://fd62-98-97-32-41.ngrok.io/twilio-webhook",
               //   })
-              //   .then((message) => Meteor.call("sms.insert", message));
+              //   .then((message) => {
+              //     const obj = {
+              //       body: message.body,
+              //       from: message.from,
+              //       to: message.to,
+              //       accountSid: message.accountSid,
+              //       sid: message.sid,
+              //       status: message.status,
+              //       dateCreated: message.dateCreated,
+              //       dateUpdated: message.dateUpdated,
+              //     };
+              //     // console.log({ obj });
+
+              //     Meteor.call("sms.insert", "Hello there");
+              //   });
             }
           });
         }

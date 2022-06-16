@@ -10,6 +10,7 @@ import "../../api/reminders/methods";
 import "../../api/reminders/server/publications";
 
 import "../../api/sms/methods";
+import "../../api/sms/server/publications";
 
 import "../../api/users/methods";
 import "../../api/users/server/publications";
