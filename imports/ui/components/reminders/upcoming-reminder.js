@@ -25,7 +25,7 @@ Template.Component_reminder_upcoming.onCreated(function () {
 
 Template.Component_reminder_upcoming.helpers({
   reminders() {
-    return Reminders.find({}, { sort: { timeToSend: 1 } });
+    return Reminders.find({ sent: false }, { sort: { timeToSend: 1 } });
   },
   displayTime(timestamp) {
     const currentTime = dayjs(Session.get("currentTime"));

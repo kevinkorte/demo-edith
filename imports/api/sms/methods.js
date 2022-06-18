@@ -3,6 +3,6 @@ import { Sms } from "./sms";
 
 Meteor.methods({
   "sms.insert"(message) {
-    console.log({ message });
+    Sms.insert({ message, createdAt: new Date() });
   },
 });

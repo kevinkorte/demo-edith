@@ -32,43 +32,51 @@ Meteor.methods({
     check(_id, String);
     return Reminders.remove(_id);
   },
+  "reminders.markAsSent"(id, sid) {
+    Reminders.update(id, { $set: { sent: true, sid } });
+  },
   "reminders.sendIfReady"() {
     const reminders = Reminders.find({}, { $filter: { sent: false } });
     if (reminders.count() > 0) {
       reminders.forEach((reminder) => {
-        if (dayjs().isSameOrAfter(dayjs(reminder.timeToSend))) {
+        if (
+          dayjs().isSameOrAfter(dayjs(reminder.timeToSend)) &&
+          reminder.sent == false
+        ) {
           reminder.selectedContacts.forEach((contact) => {
-            // console.log({ contact });
-            // console.log({ reminder });
             //First find out if our contact is fake
             const user = Contacts.findOne(contact);
             if (!user.fake) {
-              console.log("Should be sending a message");
-              Meteor.call("sms.insert", "Hello there, first");
-
-              // client.messages
-              //   .create({
-              //     body: reminder.message,
-              //     from: "+19842177570", //Twilio demo from number
-              //     to: `+1${user.unmaskedPhone}`,
-              //     statusCallback:
-              //       "https://fd62-98-97-32-41.ngrok.io/twilio-webhook",
-              //   })
-              //   .then((message) => {
-              //     const obj = {
-              //       body: message.body,
-              //       from: message.from,
-              //       to: message.to,
-              //       accountSid: message.accountSid,
-              //       sid: message.sid,
-              //       status: message.status,
-              //       dateCreated: message.dateCreated,
-              //       dateUpdated: message.dateUpdated,
-              //     };
-              //     // console.log({ obj });
-
-              //     Meteor.call("sms.insert", "Hello there");
-              //   });
+              client.messages.create(
+                {
+                  body: reminder.message,
+                  from: "+19842177570", //Twilio demo from number
+                  to: `+1${user.unmaskedPhone}`,
+                  statusCallback: `${Meteor.settings.private.twilioCallback}/twilio-webhook`,
+                },
+                Meteor.bindEnvironment((error, message) => {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    const payload = {
+                      body: message.body,
+                      from: message.from,
+                      to: message.to,
+                      accountSid: message.accountSid,
+                      sid: message.sid,
+                      status: message.status,
+                      dateCreated: message.dateCreated,
+                      dateUpdated: message.dateUpdated,
+                    };
+                    Meteor.call("sms.insert", payload);
+                    Meteor.call(
+                      "reminders.markAsSent",
+                      reminder._id,
+                      message.sid
+                    );
+                  }
+                })
+              );
             }
           });
         }
