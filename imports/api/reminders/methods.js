@@ -46,6 +46,7 @@ Meteor.methods({
           reminder.selectedContacts.forEach((contact) => {
             //First find out if our contact is fake
             const user = Contacts.findOne(contact);
+
             if (!user.fake) {
               client.messages.create(
                 {
