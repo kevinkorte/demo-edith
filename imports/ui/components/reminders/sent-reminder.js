@@ -68,7 +68,7 @@ Template.Component_reminder_sent.helpers({
       return update;
     });
     if (result.length > 0) {
-      return dayjs(result[0].createdAt).format("M-D-YY h:mm a");
+      return dayjs(result[0].createdAt).format("M/D/YY h:mm a");
     }
   },
   formatDate(date) {
