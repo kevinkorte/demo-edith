@@ -59,6 +59,28 @@
         </button>
       </div>
     </div>
+    <div class="row d-lg-none mt-3">
+      <ul class="nav nav-pills nav-fill mb-3">
+        <li class="nav-item">
+          <a
+            class="nav-link {{isActiveRoute 'App.reminders'}}"
+            aria-current="page"
+            href="{{pathFor 'App.reminders'}}"
+            >Upcoming Reminders
+            <span class="badge text-bg-blue-200"
+              >{{countUpcomingReminders}}</span
+            ></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {{isActiveRoute 'App.reminders.sent'}}"
+            href="{{pathFor 'App.reminders.sent'}}"
+            >Sent Reminders</a
+          >
+        </li>
+      </ul>
+    </div>
     <div class="row mt-3">
       <div class="col-4 col-md-5">
         <form id="create-reminder" class="" novalidate>
@@ -322,7 +344,7 @@
         </form>
       </div>
       <div class="col-8 col-md-7">
-        <ul class="nav nav-pills mb-3">
+        <ul class="nav nav-pills mb-3 d-none d-lg-flex">
           <li class="nav-item">
             <a
               class="nav-link {{isActiveRoute 'App.reminders'}}"
