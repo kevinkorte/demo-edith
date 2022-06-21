@@ -1,8 +1,10 @@
 <template name="Settings_page">
-  <div class="container mt-5">
+  <div class="container mt-lg-5 mt-3">
     <div class="row">
-      <div class="col-3">{{> Nav_settings_component}}</div>
-      <div class="col-9">{{> Template.dynamic template=view}}</div>
+      <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+        {{> Nav_settings_component}}
+      </div>
+      <div class="col-12 col-lg-9">{{> Template.dynamic template=view}}</div>
     </div>
   </div>
 </template>
