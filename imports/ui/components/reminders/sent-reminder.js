@@ -52,7 +52,6 @@ Template.Component_reminder_sent.helpers({
     }
   },
   formattedNumber(number) {
-    //+19842177570
     const masked = IMask.createMask({
       mask: "+0 (000) 000-0000",
     });
