@@ -137,19 +137,19 @@ Template.Page_reminders.events({
   "click .btn-check"(event) {
     const radioWrapper = document.getElementById("location-radio-wrapper");
     if (event.target.dataset.state == "wa") {
-      document.getElementById("sendsFrom").innerHTML =
-        "Sends from (509) 555-1234";
+      // document.getElementById("sendsFrom").innerHTML =
+      //   "Sends from (509) 555-1234";
 
       radioWrapper.classList.remove("is-invalid", "error-box");
       radioWrapper.classList.add("is-valid", "valid-box");
     } else if (event.target.dataset.state == "id") {
-      document.getElementById("sendsFrom").innerHTML =
-        "Sends from (208) 555-4321";
+      // document.getElementById("sendsFrom").innerHTML =
+      //   "Sends from (208) 555-4321";
       radioWrapper.classList.remove("is-invalid", "error-box");
       radioWrapper.classList.add("is-valid", "valid-box");
     } else {
-      document.getElementById("sendsFrom").innerHTML =
-        "Please select a location";
+      // document.getElementById("sendsFrom").innerHTML =
+      //   "Please select a location";
     }
   },
   "submit #add-new-contact"(event) {
@@ -167,7 +167,7 @@ Template.Page_reminders.events({
     masked.resolve(phone);
     let select = document.getElementById("contact-select");
     let control = select.tomselect;
-
+    let form = document.getElementById("add-new-contact");
     Meteor.call(
       "contacts.insert",
       name.toLowerCase(),
@@ -185,6 +185,7 @@ Template.Page_reminders.events({
             name: name.toLowerCase(),
             formattedPhone: phone,
           });
+          form.reset();
         }
       }
     );
@@ -259,7 +260,8 @@ Template.Page_reminders.events({
   },
   "submit #create-reminder"(event) {
     event.preventDefault();
-    document.getElementById("create-reminder").classList.add("was-validated");
+    const form = document.getElementById("create-reminder");
+    form.classList.add("was-validated");
     const message = event.target.message.value;
     //make sure we have a location set
     const location = event.target.fromNumber.value;
@@ -294,6 +296,11 @@ Template.Page_reminders.events({
           //TODO: handle error
           console.error(error);
         } else {
+          form.classList.remove("was-validated");
+          let select = document.getElementById("contact-select");
+          let control = select.tomselect;
+          control.clear();
+          form.reset();
         }
       }
     );
