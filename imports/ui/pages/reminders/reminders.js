@@ -61,7 +61,6 @@ Template.Page_reminders.onRendered(function () {
           },
           render: {
             option: function (data, escape) {
-              // console.log({ data });
               return (
                 "<div>" +
                 '<span class="text-slate-600 text-capitalize me-2">' +
@@ -88,7 +87,6 @@ Template.Page_reminders.onRendered(function () {
         });
         const contacts = Contacts.find().fetch();
         contacts.forEach((contact) => {
-          // console.log({ contact });
           tomSelect.addOption({
             _id: contact._id,
             name: contact.name,
@@ -137,7 +135,6 @@ Template.Page_reminders.helpers({
 
 Template.Page_reminders.events({
   "click .btn-check"(event) {
-    console.log(event.target.dataset.state);
     const radioWrapper = document.getElementById("location-radio-wrapper");
     if (event.target.dataset.state == "wa") {
       document.getElementById("sendsFrom").innerHTML =
@@ -169,9 +166,7 @@ Template.Page_reminders.events({
     });
     masked.resolve(phone);
     let select = document.getElementById("contact-select");
-    console.log({ select });
     let control = select.tomselect;
-    console.log({ control });
 
     Meteor.call(
       "contacts.insert",
@@ -184,7 +179,6 @@ Template.Page_reminders.events({
           //TODO: Handle error
           console.error(error);
         } else {
-          console.log("Success");
           //Clear form
           control.addOption({
             _id: result,
@@ -221,9 +215,7 @@ Template.Page_reminders.events({
             console.error(error);
           } else {
             let select = document.getElementById("contact-select");
-            console.log({ select });
             let control = select.tomselect;
-            console.log({ control });
             control.removeOption(this._id);
             info_success_toast(
               "Contact deleted",
@@ -302,7 +294,6 @@ Template.Page_reminders.events({
           //TODO: handle error
           console.error(error);
         } else {
-          console.log({ result });
         }
       }
     );

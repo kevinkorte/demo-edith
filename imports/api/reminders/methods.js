@@ -19,7 +19,6 @@ const client = require("twilio")(accountSid, authToken);
 
 Meteor.methods({
   "reminders.create"(location, selectedContacts, message, timestamp) {
-    console.log({ selectedContacts });
     return Reminders.insert({
       location,
       selectedContacts,

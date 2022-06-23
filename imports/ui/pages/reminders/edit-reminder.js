@@ -37,7 +37,6 @@ Template.Reminder_edit.onRendered(function () {
           },
           render: {
             option: function (data, escape) {
-              // console.log({ data });
               return (
                 "<div>" +
                 '<span class="text-slate-600 text-capitalize me-2">' +
@@ -64,7 +63,6 @@ Template.Reminder_edit.onRendered(function () {
         });
         const contacts = Contacts.find().fetch();
         contacts.forEach((contact) => {
-          // console.log({ contact });
           tomSelect.addOption({
             _id: contact._id,
             name: contact.name,
@@ -91,6 +89,5 @@ Template.Reminder_edit.helpers({
 Template.Reminder_edit.events({
   "submit #update-reminder"(event) {
     event.preventDefault();
-    console.log(event);
   },
 });

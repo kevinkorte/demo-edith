@@ -28,9 +28,7 @@ Meteor.startup(() => {
     );
   }
   const contacts = Contacts.find().fetch();
-  console.log(contacts.length);
   if (contacts.length < 50) {
-    console.log(50 - contacts.length);
     for (let contact = 0; contact <= 50 - contacts.length; contact++) {
       const name = faker.name.findName();
       const formattedPhone = faker.phone.phoneNumber("(###) ###-####");

@@ -18,7 +18,6 @@ Template.Team_component.helpers({
   },
   hasArchivedUsers() {
     const userCount = Meteor.users.find({ archived: true }).count();
-    console.log({ userCount });
     if (userCount > 0) {
       return true;
     }
@@ -122,7 +121,6 @@ Template.Team_component.events({
     deactivate_confirm_modal(this._id);
   },
   "click #reinstate"() {
-    console.log(this);
     Meteor.call("users.reinstate", this._id, (error, result) => {
       if (error) {
         //TODO: Handle error
@@ -139,15 +137,12 @@ Template.Team_component.events({
     success_toast();
   },
   "click .dropdown-item"(event) {
-    console.log({ event });
-    console.log(this);
     let targetRole = "";
     if (event.target.dataset.role === "member") {
       targetRole = "user";
     } else {
       targetRole = event.target.dataset.role;
     }
-    console.log({ targetRole });
     Meteor.call("users.changeRoles", this._id, targetRole, (error) => {
       if (error) {
         console.error(error);

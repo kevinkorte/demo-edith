@@ -41,7 +41,6 @@ Template.Component_reminder_upcoming.helpers({
     return dayjs(timestamp).tz("America/Boise").format("h:mm a");
   },
   getContactName(contactId) {
-    console.log("Contact: ", contactId);
     const contact = Contacts.findOne(contactId);
     if (contact) {
       return contact.name;
