@@ -17,7 +17,10 @@ Template.Component_reminder_sent.onCreated(function () {
 
 Template.Component_reminder_sent.helpers({
   reminders() {
-    return Sms.find({ "message.status": "queued" });
+    return Sms.find(
+      { "message.status": "queued" },
+      { sort: { createdAt: -1 } }
+    );
   },
   lookupRecipient(to) {
     const phone = to.slice(2);
