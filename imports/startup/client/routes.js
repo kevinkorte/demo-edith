@@ -103,9 +103,10 @@ authRoute.route("/reminders/edit/:id", {
     this.render("App_body", "Reminder_edit");
   },
 });
-
-FlowRouter.notFound = {
-  action() {
-    this.render("App_body", "App_notFound");
-  },
-};
+//Silence deprecated console log error
+//Use wildcard '*' route instead
+// FlowRouter.notFound = {
+//   action() {
+//     this.render("App_body", "App_notFound");
+//   },
+// };

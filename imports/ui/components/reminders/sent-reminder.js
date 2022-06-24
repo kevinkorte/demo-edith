@@ -22,6 +22,9 @@ Template.Component_reminder_sent.helpers({
   lookupRecipient(to) {
     const phone = to.slice(2);
     const contact = Contacts.findOne({ unmaskedPhone: phone });
+    if (contact != undefined) {
+      console.log({ contact });
+    }
     if (contact) {
       return contact.name;
     }
