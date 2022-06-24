@@ -1,5 +1,5 @@
 <template name="Component_reminder_upcoming">
-  {{#each reminders}}
+  {{#if Template.subscriptionsReady}} {{#each reminders}}
   <div class="card mb-3">
     <div class="card-body">
       <div class="mb-2 d-flex justify-content-between align-items-center">
@@ -117,5 +117,11 @@
       </div>
     </div>
   </div>
-  {{/each}}
+  {{/each}} {{else}}
+  <div class="d-flex justify-content-center my-5 text-slate-700">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  {{/if}}
 </template>

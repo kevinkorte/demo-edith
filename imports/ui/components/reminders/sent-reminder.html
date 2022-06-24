@@ -1,4 +1,5 @@
 <template name="Component_reminder_sent">
+  {{#if Template.subscriptionsReady}}
   <div class="accordion accordion-flush" id="accordionFlushParent">
     {{#each reminders}}
     <div class="accordion-item">
@@ -97,4 +98,11 @@
     </div>
     {{/each}}
   </div>
+  {{else}}
+  <div class="d-flex justify-content-center my-5 text-slate-700">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  {{/if}}
 </template>
