@@ -57,7 +57,7 @@
           <div
             class="bg-slate-900 text-slate-400 px-3 py-2 rounded font-monospace"
           >
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -74,7 +74,7 @@
               <span>Message queued on {{formatDate message.dateCreated}}</span>
             </div>
             {{#each twilioReply message.sid}}
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
